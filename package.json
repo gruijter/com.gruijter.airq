@@ -1,0 +1,12 @@
+{
+  "name": "com.gruijter.airq",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  }
+}

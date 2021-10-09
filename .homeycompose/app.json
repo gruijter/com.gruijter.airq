@@ -1,0 +1,82 @@
+{
+  "id": "com.gruijter.airq",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "brandColor": "#00b5dd",
+  "name": {
+    "en": "airQ"
+  },
+  "description": {
+    "en": "airQ provides advanced indoor air quality data"
+  },
+  "category": [
+    "climate"
+  ],
+  "tags": {
+    "en": [
+      "air quality",
+      "PM10",
+      "PM2.5",
+      "PM1",
+      "VOC",
+      "ozone",
+      "O3",
+      "oxygen",
+      "O2",
+      "CO2",
+      "CO",
+      "NO2",
+      "SO2",
+      "noise",
+      "health",
+      "temperature",
+      "humidity",
+      "pressure",
+      "fire",
+      "gas"
+    ]
+  },
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Robin Gruijter",
+    "email": "gruijter@hotmail.com"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Robin de Gruijter",
+        "email": "gruijter@hotmail.com"
+      }
+    ],
+    "translators": [
+      {
+        "name": "🇬🇧 Robin"
+      }
+    ]
+  },
+  "copyright": "Robin de Gruijter (gruijter@hotmail.com)",
+  "license": " GPL-3.0-or-later",
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "gruijter"
+      }
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/gruijter/com.gruijter.airq/issues"
+  },
+  "homeyCommunityTopicId": 0,
+  "source": "https://github.com/gruijter/com.gruijter.airq",
+  "homepage": "https://github.com/gruijter/com.gruijter.airq/blob/master/README.md",
+  "support": "https://community.athom.com/t/0",
+  "platforms": [
+    "local"
+  ]
+}

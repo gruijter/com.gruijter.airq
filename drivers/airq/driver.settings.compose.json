@@ -1,0 +1,97 @@
+[
+	{
+		"type": "group",
+		"label": {
+				"en": "Sensor information"
+		},
+		"children": [
+			{
+				"id": "id",
+				"type": "label",
+				"label": {
+						"en": "Sensor ID"
+				},
+				"hint": {
+						"en": "Unique ID of the sensor.'"
+				},
+				"value": ""
+			}
+		]
+	},
+	{
+		"type": "group",
+		"label": {
+				"en": "Connection settings"
+		},
+		"children": [
+			{
+				"id": "password",
+				"type": "password",
+				"label": {
+						"en": "Password"
+				},
+				"hint": {
+						"en": "The login password of the device. The default is airqsetup"
+				},
+				"value": "airqsetup"
+			},
+			{
+				"id": "address",
+				"type": "text",
+				"label": {
+						"en": "IP address"
+				},
+				"hint": {
+						"en": "Use of a fixed IP address is required."
+				},
+				"value": ""
+			},
+			{
+				"id": "pollInterval",
+				"type": "number",
+				"label": {
+						"en": "Update interval (seconds)"
+				},
+				"hint": {
+						"en": "Interval for checking the device for a status change."
+				},
+				"min": 1,
+				"value": 10
+			}
+		]
+	},
+	{
+		"type": "group",
+		"label": {
+				"en": "Sensor settings"
+		},
+		"children": [
+			{
+				"id": "alarm_health_threshold",
+				"type": "number",
+				"label": {
+						"en": "Health alarm threshold"
+				},
+				"hint": {
+						"en": "Health alarm will be triggered on or below this value"
+				},
+				"value": 50,
+				"min": 1,
+				"max": 99
+			},
+			{
+				"id": "alarm_perf_threshold",
+				"type": "number",
+				"label": {
+						"en": "Performance alarm threshold"
+				},
+				"hint": {
+						"en": "Performance alarm will be triggered on or below this value"
+				},
+				"value": 50,
+				"min": 1,
+				"max": 99
+			}
+		]
+	}
+]

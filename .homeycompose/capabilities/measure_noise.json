@@ -1,0 +1,14 @@
+{
+	"type": "number",
+	"title": {
+		"en": "Noise"
+	},
+	"units": {
+		"en": "dB(A)"
+	  },
+	"decimals": 3,
+	"getable": true,
+	"setable": false,
+	"insights": true,
+	"uiComponent": "sensor"
+}

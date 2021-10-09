@@ -1,0 +1,21 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "Performance alarm"
+  },
+  "desc": {
+    "en": "True when performance indicator is below the configured value"
+
+  },
+  "insights": true,
+  "insightsTitleTrue": {
+    "en": "Performance alarm turned on"
+  },
+  "insightsTitleFalse": {
+    "en": "Performance alarm turned off"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "./assets/measure_perf.svg"
+}

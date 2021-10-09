@@ -1,0 +1,15 @@
+{
+	"type": "number",
+	"title": {
+		"en": "O2"
+	},
+	"units": {
+		"en": "%"
+	  },
+	"decimals": 3,
+	"getable": true,
+	"setable": false,
+	"insights": true,
+	"uiComponent": "sensor",
+	"icon": "./assets/measure_o2.svg"
+}

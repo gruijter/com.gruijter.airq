@@ -1,0 +1,21 @@
+{
+    "type": "boolean",
+    "title": {
+      "en": "Gas alarm"
+    },
+    "desc": {
+      "en": "True when dangerous gas values have been detected"
+
+    },
+    "insights": true,
+    "insightsTitleTrue": {
+      "en": "Gas alarm turned on"
+    },
+    "insightsTitleFalse": {
+      "en": "Gas alarm turned off"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "icon": "./assets/alarm_gas.svg"
+  }

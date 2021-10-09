@@ -1,0 +1,15 @@
+{
+	"type": "number",
+	"title": {
+		"en": "Dew point"
+	},
+	"units": {
+		"en": "°C"
+	  },
+	"decimals": 3,
+	"getable": true,
+	"setable": false,
+	"insights": true,
+	"uiComponent": "sensor",
+	"icon": "./assets/measure_dewpt.svg"
+}

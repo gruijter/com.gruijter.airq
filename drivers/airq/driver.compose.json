@@ -1,0 +1,81 @@
+{
+  "name": {
+    "en": "airQ"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "measure_health",
+    "measure_perf",
+    "measure_temperature",
+    "measure_humidity",
+    "measure_humidity_abs",
+    "measure_dewpt",
+    "measure_pressure",
+    "measure_noise",
+    "measure_voc",
+    "measure_so2",
+    "measure_co",
+    "measure_no2",
+    "measure_o3",
+    "measure_o2",
+    "measure_co2",
+    "measure_pm1",
+    "measure_pm25",
+    "measure_pm10",
+    "alarm_fire",
+    "alarm_gas",
+    "alarm_health",
+    "alarm_perf"
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  },
+  "energy": {
+    "approximation": {
+      "usageConstant": 2
+    }
+  },
+  "discovery": "airq",
+  "pair": [
+    {
+      "id": "login_credentials",
+      "template": "login_credentials",
+      "options": {
+        "usernameLabel": {
+          "en": "Username"
+        },
+        "usernamePlaceholder": {
+          "en": "no username required"
+        },
+        "passwordLabel": {
+          "en": "Password"
+        },
+        "passwordPlaceholder": {
+          "en": "airqsetup"
+        }
+      }
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "options": {
+        "singular": false
+      },
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ],
+  "connectivity": [
+    "lan"
+  ],
+  "platforms": [
+    "local"
+  ]
+}

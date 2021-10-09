@@ -1,0 +1,21 @@
+{
+    "type": "boolean",
+    "title": {
+      "en": "Health alarm"
+    },
+    "desc": {
+      "en": "True when health indicator is below the configured value"
+
+    },
+    "insights": true,
+    "insightsTitleTrue": {
+      "en": "Health alarm turned on"
+    },
+    "insightsTitleFalse": {
+      "en": "Health alarm turned off"
+    },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "icon": "./assets/measure_health.svg"
+  }

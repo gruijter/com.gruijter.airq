@@ -354,7 +354,7 @@
   "drivers": [
     {
       "name": {
-        "en": "airQ"
+        "en": "airQ Science"
       },
       "class": "sensor",
       "capabilities": [

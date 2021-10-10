@@ -1,0 +1,13 @@
+{
+    "id": "status_ok_false",
+    "title": {
+        "en": "The sensors status changed to not OK"
+    },
+    "args": [
+        {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+        }
+    ]
+  }

@@ -1,0 +1,13 @@
+{
+    "id": "alarm_perf_true",
+    "title": {
+        "en": "The performance alarm turned on"
+    },
+    "args": [
+        {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+        }
+    ]
+  }

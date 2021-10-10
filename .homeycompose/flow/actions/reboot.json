@@ -1,0 +1,13 @@
+{
+    "id": "reboot",
+    "title": {
+        "en": "Reboot"
+    },
+    "args": [
+        {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+        }
+    ]
+}

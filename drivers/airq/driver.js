@@ -43,24 +43,23 @@ class MyDriver extends Driver {
 		session.setHandler('list_devices', async () => {
 			const discoveryStrategy = this.getDiscoveryStrategy();
 			const discoveryResults = discoveryStrategy.getDiscoveryResults();
-			const devices = Object.values(discoveryResults).map((discoveryResult) => {
-				return {
-					name: discoveryResult.txt.devicename,
-					data: {
-						id: discoveryResult.id,
-					},
-					settings: {
-						password,
-						id: discoveryResult.id,
-						address: discoveryResult.address,
-						pollInterval: 10,
-					},
-					// capabilities: ['measure_health', 'measure_perf', 'measure_temperature', 'measure_humidity', 'measure_humidity_abs',
-					// 	'measure_dew_point', 'measure_pressure',	'measure_noise', 'measure_voc',	'measure_so2', 'measure_co', 'measure_no2',
-					// 	'measure_o3', 'measure_o2', 'measure_co2', 'measure_pm1', 'measure_pm25', 'measure_pm10', 'alarm_fire', 'alarm_gas',
-					// 	'alarm_health', 'alarm_perf'],
-				};
-			});
+			console.log(discoveryResults);
+			const devices = Object.values(discoveryResults).map((discoveryResult) => ({
+				name: discoveryResult.txt.devicename,
+				data: {
+					id: discoveryResult.id,
+				},
+				settings: {
+					password,
+					id: discoveryResult.id,
+					address: discoveryResult.address,
+					pollInterval: 10,
+				},
+				// capabilities: ['measure_health', 'measure_perf', 'measure_temperature', 'measure_humidity', 'measure_humidity_abs',
+				// 	'measure_dew_point', 'measure_pressure',	'measure_noise', 'measure_voc',	'measure_so2', 'measure_co', 'measure_no2',
+				// 	'measure_o3', 'measure_o2', 'measure_co2', 'measure_pm1', 'measure_pm25', 'measure_pm10', 'alarm_fire', 'alarm_gas',
+				// 	'alarm_health', 'alarm_perf'],
+			}));
 			return devices;
 		});
 	}

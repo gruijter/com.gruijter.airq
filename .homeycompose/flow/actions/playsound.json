@@ -1,0 +1,41 @@
+{
+    "id": "playsound",
+    "title": {
+        "en": "Beep once"
+    },
+    "titleFormatted": { "en": "Beep [[vol]]% for [[length]]ms at [[freq]]Hz" },
+    "args": [
+        {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+        },
+        {
+            "type": "number",
+            "name": "length",
+            "title": { "en": "Duration" },
+            "placeholder": { "en": "ms" },
+            "min": 50,
+            "max": 10000,
+            "step": 10
+        },
+        {
+            "type": "number",
+            "name": "freq",
+            "title": { "en": "Frequency" },
+            "placeholder": { "en": "Hz" },
+            "min": 500,
+            "max": 15000,
+            "step": 10
+        },
+        {
+            "type": "number",
+            "name": "vol",
+            "title": { "en": "Volume" },
+            "placeholder": { "en": "%" },
+            "min": 1,
+            "max": 100,
+            "step": 1
+        }
+    ]
+}

@@ -24,7 +24,35 @@ const Homey = require('homey');
 class MyApp extends Homey.App {
 
 	async onInit() {
-		this.log('Air-Q App has been initialized');
+		this.registerFlowListeners();
+		this.log('airQ App has been initialized');
+	}
+
+	registerFlowListeners() {
+
+		// action cards
+		const reboot = this.homey.flow.getActionCard('reboot');
+		reboot.registerRunListener((args) => args.device.reboot('flow'));
+
+		const blink = this.homey.flow.getActionCard('blink');
+		blink.registerRunListener((args) => args.device.blink('flow'));
+
+		const playsound = this.homey.flow.getActionCard('playsound');
+		playsound.registerRunListener((args) => args.device.playsound('flow', args));
+
+		// condition cards
+		const alarmGas = this.homey.flow.getConditionCard('alarm_gas_is_on');
+		alarmGas.registerRunListener((args) => args.device.getCapabilityValue('alarm_gas'));
+
+		const alarmHealth = this.homey.flow.getConditionCard('alarm_health_is_on');
+		alarmHealth.registerRunListener((args) => args.device.getCapabilityValue('alarm_health'));
+
+		const alarmPerf = this.homey.flow.getConditionCard('alarm_perf_is_on');
+		alarmPerf.registerRunListener((args) => args.device.getCapabilityValue('alarm_perf'));
+
+		const statusOK = this.homey.flow.getConditionCard('status_ok');
+		statusOK.registerRunListener((args) => args.device.statusOK);
+
 	}
 
 }

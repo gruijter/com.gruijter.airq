@@ -1,0 +1,13 @@
+{
+    "id": "restarted",
+    "title": {
+        "en": "The device has restarted"
+    },
+    "args": [
+        {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+        }
+    ]
+  }

@@ -1,0 +1,13 @@
+{
+    "id": "status_ok",
+    "title": {
+        "en": "Sensors status !{{is|is not}} OK"
+    },
+    "args": [
+        {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+        }
+    ]
+}

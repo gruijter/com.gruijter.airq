@@ -1,7 +1,7 @@
 {
 	"type": "number",
 	"title": {
-		"en": "VOC"
+		"en": "tVOC"
 	},
 	"units": {
 		"en": "ppb"
@@ -11,5 +11,5 @@
 	"setable": false,
 	"insights": true,
 	"uiComponent": "sensor",
-	"icon": "./assets/measure_voc.svg"
+	"icon": "./assets/measure_tvoc.svg"
 }

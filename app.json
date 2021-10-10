@@ -21,19 +21,28 @@
       "PM2.5",
       "PM1",
       "VOC",
-      "Ozone",
+      "ozone",
       "O3",
+      "oxygen",
+      "O2",
       "CO2",
       "CO",
       "NO2",
-      "SO2"
+      "SO2",
+      "noise",
+      "health",
+      "temperature",
+      "humidity",
+      "pressure",
+      "fire",
+      "gas"
     ]
   },
   "permissions": [],
   "images": {
-    "small": "/assets/images/small.png",
-    "large": "/assets/images/large.png",
-    "xlarge": "/assets/images/xlarge.png"
+    "small": "/assets/images/small.jpg",
+    "large": "/assets/images/large.jpg",
+    "xlarge": "/assets/images/xlarge.jpg"
   },
   "author": {
     "name": "Robin Gruijter",
@@ -71,6 +80,277 @@
   "platforms": [
     "local"
   ],
+  "flow": {
+    "triggers": [
+      {
+        "id": "alarm_gas_false",
+        "title": {
+          "en": "The gas alarm turned off"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ]
+      },
+      {
+        "id": "alarm_gas_true",
+        "title": {
+          "en": "The gas alarm turned on"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ]
+      },
+      {
+        "id": "alarm_health_false",
+        "title": {
+          "en": "The health alarm turned off"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ]
+      },
+      {
+        "id": "alarm_health_true",
+        "title": {
+          "en": "The health alarm turned on"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ]
+      },
+      {
+        "id": "alarm_perf_false",
+        "title": {
+          "en": "The performance alarm turned off"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ]
+      },
+      {
+        "id": "alarm_perf_true",
+        "title": {
+          "en": "The performance alarm turned on"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ]
+      },
+      {
+        "id": "door_event",
+        "title": {
+          "en": "Door event detected"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ]
+      },
+      {
+        "id": "restarted",
+        "title": {
+          "en": "The device has restarted"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ]
+      },
+      {
+        "id": "status_ok_false",
+        "title": {
+          "en": "The sensors status changed to not OK"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ]
+      },
+      {
+        "id": "status_ok_true",
+        "title": {
+          "en": "The sensors status changed to OK"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "alarm_gas_is_on",
+        "title": {
+          "en": "The gas alarm is !{{on|off}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ]
+      },
+      {
+        "id": "alarm_health_is_on",
+        "title": {
+          "en": "The health alarm is !{{on|off}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ]
+      },
+      {
+        "id": "alarm_perf_is_on",
+        "title": {
+          "en": "The performance alarm is !{{on|off}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ]
+      },
+      {
+        "id": "status_ok",
+        "title": {
+          "en": "Sensors status !{{is|is not}} OK"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "blink",
+        "title": {
+          "en": "Blink once"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ]
+      },
+      {
+        "id": "playsound",
+        "title": {
+          "en": "Beep once"
+        },
+        "titleFormatted": {
+          "en": "Beep [[vol]]% for [[length]]ms at [[freq]]Hz"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          },
+          {
+            "type": "number",
+            "name": "length",
+            "title": {
+              "en": "Duration"
+            },
+            "placeholder": {
+              "en": "ms"
+            },
+            "min": 50,
+            "max": 10000,
+            "step": 10
+          },
+          {
+            "type": "number",
+            "name": "freq",
+            "title": {
+              "en": "Frequency"
+            },
+            "placeholder": {
+              "en": "Hz"
+            },
+            "min": 500,
+            "max": 15000,
+            "step": 10
+          },
+          {
+            "type": "number",
+            "name": "vol",
+            "title": {
+              "en": "Volume"
+            },
+            "placeholder": {
+              "en": "%"
+            },
+            "min": 1,
+            "max": 100,
+            "step": 1
+          }
+        ]
+      },
+      {
+        "id": "reboot",
+        "title": {
+          "en": "Reboot"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ]
+      }
+    ]
+  },
   "drivers": [
     {
       "name": {
@@ -102,13 +382,13 @@
         "alarm_perf"
       ],
       "images": {
-        "small": "/drivers/airq/assets/images/small.png",
-        "large": "/drivers/airq/assets/images/large.png",
-        "xlarge": "/drivers/airq/assets/images/xlarge.png"
+        "small": "/drivers/airq/assets/images/small.jpg",
+        "large": "/drivers/airq/assets/images/large.jpg",
+        "xlarge": "/drivers/airq/assets/images/xlarge.jpg"
       },
       "energy": {
         "approximation": {
-          "usageConstant": 2
+          "usageConstant": 1.5
         }
       },
       "discovery": "airq",
@@ -494,7 +774,7 @@
     "measure_voc": {
       "type": "number",
       "title": {
-        "en": "VOC"
+        "en": "tVOC"
       },
       "units": {
         "en": "ppb"
@@ -504,7 +784,7 @@
       "setable": false,
       "insights": true,
       "uiComponent": "sensor",
-      "icon": "./assets/measure_voc.svg"
+      "icon": "./assets/measure_tvoc.svg"
     }
   },
   "discovery": {

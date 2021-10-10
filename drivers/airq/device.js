@@ -64,16 +64,18 @@ class MyDevice extends Device {
 	async onInit() {
 		this.log(`Initializing ${this.getName()}`);
 		try {
+			this.stopPolling();
+			this.setAvailable();
 			const options = {
 				address: this.getSettings().address,
 				port: 80,
 				timeout: (this.getSettings().pollInterval * 950) || 10000,
 				password: this.getSettings().password,
 			};
+			this.statusOK = true;
 			this.airQ = new AirQ(options);
 			this.startPolling(this.getSettings().pollInterval || 10);
-			this.log(JSON.stringify(await this.airQ.getConfig()));
-			this.setAvailable();
+			this.log(await this.airQ.getConfig());
 		} catch (error) {
 			this.error(error);
 			this.setUnavailable(error.message);
@@ -82,7 +84,6 @@ class MyDevice extends Device {
 
 	startPolling(interval) {
 		this.log(`Start polling ${this.getName()} @ ${interval} seconds interval`);
-		this.stopPolling();
 		this.doPoll(); // get first results immediately
 		this.intervalIdDevicePoll = this.homey.setInterval(() => {
 			this.doPoll();
@@ -142,12 +143,31 @@ class MyDevice extends Device {
 			const data = await this.airQ.getData();
 			this.handleData(data);
 			this.busy = false;
+			// if (this.statusOK) this.setAvailable();
 			this.setAvailable();
 		} catch (error) {
 			this.error(error);
 			this.busy = false;
 			this.setUnavailable(error.message);
 		}
+	}
+
+	async reboot(source) {
+		this.log(`Booting ${this.getName()} via ${source}`);
+		await this.airQ.reboot();
+		return Promise.resolve(true);
+	}
+
+	async blink(source) {
+		this.log(`Blinking ${this.getName()} via ${source}`);
+		await this.airQ.blink();
+		return Promise.resolve(true);
+	}
+
+	async playsound(source, args) {
+		this.log(`Beep ${this.getName()} via ${source}`);
+		await this.airQ.playsound(args.freq / 2, args.vol, args.length);
+		return Promise.resolve(true);
 	}
 
 	async setCapability(capability, value) {
@@ -170,16 +190,30 @@ class MyDevice extends Device {
 	handleData(info) {
 		try {
 			const data = info;
+			let restarted = false;
+			let doorEvent = false;
+			let justOK = false;
+			let justNotOK = false;
+
 			// calculate some values
 			data.alarm_gas = data.health === -200;
 			data.alarm_fire = data.health === -800;
-			data.alarm_health = data.health <= this.getSettings('alarm_health_threshold');
-			data.alarm_perf = data.performance <= this.getSettings('alarm_performance_threshold');
-
 			data.health = Math.round(data.health / 10);
 			data.performance = Math.round(data.performance / 10);
+			data.alarm_health = data.health <= this.getSettings().alarm_health_threshold;
+			data.alarm_perf = data.performance <= this.getSettings().alarm_performance_threshold;
 
-			if (data.door_event) console.log('door event:', data.door_event);
+			// check for restart
+			if (this.lastData && (this.lastData.uptime > data.uptime)) restarted = true;
+
+			// check for status OK
+			this.statusOK = data.Status === 'OK';
+			justOK = this.statusOK && this.lastData && this.lastData.Status !== 'OK';
+			justNotOK = !this.statusOK && this.lastData && this.lastData.Status === 'OK';
+			// if (!this.statusOK) this.setUnavailable('Device is not ready yet');
+
+			// check for door_event
+			doorEvent = data.door_event;
 
 			// update capabilities
 			// console.log(data);
@@ -188,6 +222,35 @@ class MyDevice extends Device {
 				const dataValue = getValue(data, dataKey);	// undefined if missing or warm up
 				this.setCapability(capability, dataValue);
 			});
+
+			// update flow triggers
+			const tokens = {};
+			if (restarted) {
+				this.log(`${this.getName()} just restarted`);
+				this.homey.flow.getDeviceTriggerCard('restarted')
+					.trigger(this, tokens)
+					.catch(this.error);
+			}
+			if (justOK) {
+				this.log(`${this.getName()} just got OK`);
+				this.homey.flow.getDeviceTriggerCard('status_ok_true')
+					.trigger(this, tokens)
+					.catch(this.error);
+			}
+			if (justNotOK) {
+				this.log(`${this.getName()} just got not OK`);
+				this.homey.flow.getDeviceTriggerCard('status_ok_false')
+					.trigger(this, tokens)
+					.catch(this.error);
+			}
+			if (doorEvent) {
+				this.log(`${this.getName()} has a door event: ${data.door_event}`);
+				this.homey.flow.getDeviceTriggerCard('door_event')
+					.trigger(this, tokens)
+					.catch(this.error);
+			}
+
+			this.lastData = info;
 
 		} catch (error) {
 			this.error(error);

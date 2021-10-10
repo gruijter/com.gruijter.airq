@@ -1,0 +1,13 @@
+{
+    "id": "alarm_health_true",
+    "title": {
+        "en": "The health alarm turned on"
+    },
+    "args": [
+        {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+        }
+    ]
+  }

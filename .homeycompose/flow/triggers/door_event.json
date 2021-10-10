@@ -1,0 +1,13 @@
+{
+    "id": "door_event",
+    "title": {
+        "en": "Door event detected"
+    },
+    "args": [
+        {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+        }
+    ]
+  }

@@ -1,0 +1,13 @@
+{
+    "id": "alarm_gas_is_on",
+    "title": {
+        "en": "The gas alarm is !{{on|off}}"
+    },
+    "args": [
+        {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+        }
+    ]
+}

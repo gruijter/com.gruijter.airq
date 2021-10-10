@@ -1,0 +1,13 @@
+{
+    "id": "blink",
+    "title": {
+        "en": "Blink once"
+    },
+    "args": [
+        {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+        }
+    ]
+}

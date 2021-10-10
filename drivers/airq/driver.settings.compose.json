@@ -42,7 +42,7 @@
 						"en": "IP address"
 				},
 				"hint": {
-						"en": "Use of a fixed IP address is required."
+						"en": "Use of a fixed IP address is very much preferred."
 				},
 				"value": ""
 			},

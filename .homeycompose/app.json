@@ -72,11 +72,11 @@
   "bugs": {
     "url": "https://github.com/gruijter/com.gruijter.airq/issues"
   },
-  "homeyCommunityTopicId": 0,
   "source": "https://github.com/gruijter/com.gruijter.airq",
   "homepage": "https://github.com/gruijter/com.gruijter.airq/blob/master/README.md",
-  "support": "https://community.athom.com/t/0",
+  "support": "https://community.athom.com/t/52938",
   "platforms": [
     "local"
-  ]
+  ],
+  "homeyCommunityTopicId": 52938
 }

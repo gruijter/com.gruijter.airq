@@ -1,6 +1,6 @@
 # airQ
 
-airQ provides advanced indoor air quality data
+airQ Science provides advanced indoor air quality data
 
 Supported sensor data:
 * Temperature
@@ -34,5 +34,5 @@ The following controls are possible from Homey:
 * Reboot
 
 ## setup in Homey
-You need to have a fixed IP address for your airQ. When adding a device, enter the password. If you left the password on factory default (airqsetup) you can skip this step and go to the next screen. All airQ devices in your network will be shown. After adding one or more airQ devices they will be added as a Homey device. Note that you will only receive data if the password is correct. If needed you can change the password in the advanced device settings.
+Having a fixed IP address for your airQ Science is preferred. When adding a device, enter the password (username can be left empty). If you left the password on factory default (airqsetup) you can skip this step and go directly to the next screen. All airQ devices in your network will be shown. After adding one or more airQ devices they will be added as a Homey device. Note that you will only receive data if the password is correct. If needed you can change the password in the advanced device settings.
 

@@ -82,6 +82,37 @@ class MyDevice extends Device {
 		}
 	}
 
+	onDiscoveryResult(discoveryResult) {
+		// Return a truthy value here if the discovery result matches your device.
+		return discoveryResult.id === this.getData().id;
+	}
+
+	async onDiscoveryAvailable(discoveryResult) {
+		// This method will be executed once when the device has been found (onDiscoveryResult returned true)
+		this.log('onDiscoveryAvailable triggered');
+		if (this.getSettings().address !== discoveryResult.address) {
+			this.log(`${this.getName()} IP address changed to ${discoveryResult.address}`);
+			this.setSettings({ address: discoveryResult.address });
+			this.restartDevice();
+		}
+	}
+
+	onDiscoveryAddressChanged(discoveryResult) {
+		// Update your connection details here, reconnect when the device is offline
+		this.log('onDiscoveryAddressChanged triggered');
+		if (this.getSettings().address !== discoveryResult.address) {
+			this.log(`${this.getName()} IP address changed to ${discoveryResult.address}`);
+			this.setSettings({ address: discoveryResult.address });
+			this.restartDevice();
+		} else this.log('IP address still the same :)');
+	}
+
+	// onDiscoveryLastSeenChanged() {
+	// 	// When the device is offline, try to reconnect here
+	// 	this.log('onDiscoveryLastSeenChanged triggered');
+	// 	// console.log(discoveryResult);
+	// }
+
 	startPolling(interval) {
 		this.log(`Start polling ${this.getName()} @ ${interval} seconds interval`);
 		this.doPoll(); // get first results immediately

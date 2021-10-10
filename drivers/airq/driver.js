@@ -43,7 +43,6 @@ class MyDriver extends Driver {
 		session.setHandler('list_devices', async () => {
 			const discoveryStrategy = this.getDiscoveryStrategy();
 			const discoveryResults = discoveryStrategy.getDiscoveryResults();
-			console.log(discoveryResults);
 			const devices = Object.values(discoveryResults).map((discoveryResult) => ({
 				name: discoveryResult.txt.devicename,
 				data: {

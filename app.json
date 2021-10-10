@@ -73,13 +73,13 @@
   "bugs": {
     "url": "https://github.com/gruijter/com.gruijter.airq/issues"
   },
-  "homeyCommunityTopicId": 0,
   "source": "https://github.com/gruijter/com.gruijter.airq",
   "homepage": "https://github.com/gruijter/com.gruijter.airq/blob/master/README.md",
-  "support": "https://community.athom.com/t/0",
+  "support": "https://community.athom.com/t/52938",
   "platforms": [
     "local"
   ],
+  "homeyCommunityTopicId": 52938,
   "flow": {
     "triggers": [
       {
@@ -477,7 +477,7 @@
                 "en": "IP address"
               },
               "hint": {
-                "en": "Use of a fixed IP address is required."
+                "en": "Use of a fixed IP address is very much preferred."
               },
               "value": ""
             },

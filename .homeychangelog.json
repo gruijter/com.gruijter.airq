@@ -1,5 +1,8 @@
 {
   "1.0.0": {
     "en": "Homey app store first release"
+  },
+  "1.1.0": {
+    "en": "Added capabilities for noise_max, virus_free index and virus alarm. Added additional flow cards. Crypto-js@4.2.0"
   }
 }

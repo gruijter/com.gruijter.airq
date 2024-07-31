@@ -1,2 +1,3 @@
 v1.0.0  07.03.2021 First release.
+v1.1.0  31.07.2024 Added capabilities for noise_max, virus_free index and virus alarm. Added additional flow cards. Crypto-js@4.2.0
 

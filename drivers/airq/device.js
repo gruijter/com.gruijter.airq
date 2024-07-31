@@ -1,5 +1,5 @@
 /*
-Copyright 2021, Robin de Gruijter (gruijter@hotmail.com)
+Copyright 2021 - 2024, Robin de Gruijter (gruijter@hotmail.com)
 
 This file is part of com.gruijter.airq.
 
@@ -28,12 +28,14 @@ const setTimeoutPromise = util.promisify(setTimeout);
 const capabilityMap = {
 	measure_health: 'health', // 805, Calculated health index. Range 0 to 1000: normal rating. -200 for gas alarm. -800 for fire alarm.,
 	measure_perf: 'performance', // 470.3317
+	measure_virus: 'virus', // [ 78.4, 20 ]
 	measure_temperature: 'temperature', // [ 19.596, 0.54 ]
 	measure_humidity: 'humidity', // [ 72.74601, 4.34 ]
 	measure_humidity_abs: 'humidity_abs', // [ 12.327, 0.58 ]
 	measure_dewpt: 'dewpt', // [ 14.227, 0.8 ]
 	measure_pressure: 'pressure', // [ 1003.23, 1 ]
 	measure_noise: 'sound', // [ 41.5, 4.9 ]
+	'measure_noise.max': 'sound_max', // [ 85.6, 1.9 ]
 	measure_voc: 'tvoc', // [ 114, 17.1 ]
 	measure_so2: 'so2', // [ 70.29, 136 ]
 	measure_co: 'co', // [ 1.409, 0.1 ]
@@ -46,6 +48,7 @@ const capabilityMap = {
 	measure_pm10: 'pm10', // [ 6, 11 ]
 	alarm_fire: 'alarm_fire', // false
 	alarm_gas: 'alarm_gas', // false
+	alarm_virus: 'alarm_virus', // false
 	alarm_health: 'alarm_health', // false
 	alarm_perf: 'alarm_perf', // false
 };
@@ -214,7 +217,7 @@ class MyDevice extends Device {
 				.catch((error) => {
 					this.error(error, capability, value);
 				});
-			this.setCapability(capability, value);
+			this.setCapability(capability, value).catch(this.error);
 		}
 	}
 
@@ -233,6 +236,7 @@ class MyDevice extends Device {
 			data.performance = Math.round(data.performance / 10);
 			data.alarm_health = data.health <= this.getSettings().alarm_health_threshold;
 			data.alarm_perf = data.performance <= this.getSettings().alarm_performance_threshold;
+			if (data.virus)	data.alarm_virus = data.virus[0] <= this.getSettings().alarm_virus_threshold;
 
 			// check for restart
 			if (this.lastData && (this.lastData.uptime > data.uptime)) restarted = true;
@@ -295,40 +299,42 @@ module.exports = MyDevice;
 /*
 data:
 {
-  tvoc: [ 114, 17.1 ],
-  pm2_5: [ 4, 10 ],
+  pressure_rel: [ 1016.68, 2.21 ],
+  tvoc: [ 3835, 706 ],
+  pm2_5: [ 1, 10 ],
   DeviceID: 'xxxxxxxxb33faa8exxxxxxxxxxxxxxxx',
   Status: 'OK',
-  humidity: [ 72.74601, 4.34 ],
-  cnt0_3: [ 756, 84 ],
-  measuretime: 1931,
-  sound: [ 41.5, 4.9 ],
-  temperature: [ 19.596, 0.54 ],
-  cnt0_5: [ 221, 31 ],
-  performance: 470.3317,
-  co: [ 1.409, 0.1 ],
-  humidity_abs: [ 12.327, 0.58 ],
-  co2: [ 913, 77.39 ],
-  uptime: 3968,
-  so2: [ 70.29, 136 ],
-  cnt2_5: [ 2, 10 ],
-  o3: [ -501.53, 28.8 ],
+  humidity: [ 64.922, 4.66 ],
+  cnt0_3: [ 516, 60 ],
+  virus: [ 78.4, 20 ],
+  sound: [ 59, 2.3 ],
+  measuretime: 2331,
+  temperature: [ 23.893, 0.5 ],
+  cnt0_5: [ 124, 22 ],
+  performance: 637.528,
+  co: [ 0.433, 0.087 ],
+  humidity_abs: [ 14.104, 0.85 ],
+  co2: [ 694, 70.8 ],
+  uptime: 503513,
+  so2: [ 28.2, 16.4 ],
+  cnt2_5: [ 0, 10 ],
+  o3: [ 9.96, 1.5 ],
   cnt10: [ 0, 10 ],
-  no2: [ -727.27, 42.3 ],
-  cnt5: [ 2, 10 ],
-  timestamp: 1633187830000,
-  pressure: [ 1003.23, 1 ],
-  TypPS: 4,
-  cnt1: [ 18, 12 ],
-  door_event: 0,
-  pm1: [ 4, 10 ],
-  oxygen: [ 20.334, 0.92 ],
-  dewpt: [ 14.227, 0.8 ],
-  pm10: [ 6, 11 ],
-  health: 805,
-  bat: [ 0, 0 ],
-  dHdt: 0.45,
-  dCO2dt: 255.62
+  no2: [ 28.56, 2.3 ],
+  cnt5: [ 0, 10 ],
+  timestamp: 1722424332000,
+  pressure: [ 1016.68, 1 ],
+  TypPS: 2.5,
+  cnt1: [ 2, 10 ],
+  sound_max: [ 85.6, 1.9 ],
+  pm1: [ 0, 10 ],
+  oxygen: [ 20.633, 4.36 ],
+  dewpt: [ 17.07, 0.96 ],
+  pm10: [ 1, 10 ],
+  fahrenheit: [ 75.007, 0.9 ],
+  health: 934,
+  dHdt: 0.04,
+  dCO2dt: 69.67
 }
 
 {

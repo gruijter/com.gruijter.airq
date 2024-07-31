@@ -1,0 +1,23 @@
+{
+	"title": { 
+		"en": "The O3-level changed"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=airq"
+		}
+	],
+	"tokens": [
+		{
+			"name": "measure_o3",
+			"type": "number",
+			"title": { 
+				"en": "O3 level"
+			},
+			"example": 53
+		}
+	]
+}

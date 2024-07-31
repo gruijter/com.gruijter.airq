@@ -1,0 +1,23 @@
+{
+	"title": { 
+		"en": "The NO2-level changed"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=airq"
+		}
+	],
+	"tokens": [
+		{
+			"name": "measure_no2",
+			"type": "number",
+			"title": { 
+				"en": "NO2 level"
+			},
+			"example": 53
+		}
+	]
+}

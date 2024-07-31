@@ -2,3 +2,6 @@ env.json
 roadmap.txt
 test.js
 build/
+
+# Added by Homey CLI
+/.homeybuild/

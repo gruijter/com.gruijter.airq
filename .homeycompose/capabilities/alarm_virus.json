@@ -1,0 +1,21 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "Virus alarm"
+  },
+  "desc": {
+    "en": "True when performance indicator is below the configured value"
+
+  },
+  "insights": true,
+  "insightsTitleTrue": {
+    "en": "Virus alarm turned on"
+  },
+  "insightsTitleFalse": {
+    "en": "Virus alarm turned off"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "./assets/measure_virus.svg"
+}

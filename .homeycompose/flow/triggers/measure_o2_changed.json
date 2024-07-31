@@ -1,0 +1,23 @@
+{
+	"title": { 
+		"en": "The O2-level changed"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=airq"
+		}
+	],
+	"tokens": [
+		{
+			"name": "measure_o2",
+			"type": "number",
+			"title": { 
+				"en": "O2 level"
+			},
+			"example": 20
+		}
+	]
+}

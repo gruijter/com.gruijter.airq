@@ -1,0 +1,23 @@
+{
+	"title": { 
+		"en": "The noise max changed"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=airq"
+		}
+	],
+	"tokens": [
+		{
+			"name": "measure_noise.max",
+			"type": "number",
+			"title": { 
+				"en": "Noise max level"
+			},
+			"example": 53
+		}
+	]
+}

@@ -1,14 +1,15 @@
 {
 	"type": "number",
 	"title": {
-		"en": "Noise"
+		"en": "Virus free"
 	},
 	"units": {
-		"en": "dB(A)"
+		"en": "%"
 	  },
 	"decimals": 3,
 	"getable": true,
 	"setable": false,
 	"insights": true,
-	"uiComponent": "sensor"
+	"uiComponent": "sensor",
+	"icon": "./assets/measure_virus.svg"
 }

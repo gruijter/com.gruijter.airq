@@ -1,0 +1,23 @@
+{
+	"title": { 
+		"en": "The dewpoint changed"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=airq"
+		}
+	],
+	"tokens": [
+		{
+			"name": "measure_dewpt",
+			"type": "number",
+			"title": { 
+				"en": "Dewpoint"
+			},
+			"example": 13
+		}
+	]
+}

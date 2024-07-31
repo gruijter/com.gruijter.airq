@@ -1,0 +1,12 @@
+{
+  "title": {
+      "en": "The virus alarm turned off"
+  },
+  "args": [
+      {
+          "type": "device",
+          "name": "device",
+          "filter": "driver_id=airq"
+      }
+  ]
+}

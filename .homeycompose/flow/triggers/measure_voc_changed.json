@@ -1,0 +1,23 @@
+{
+	"title": { 
+		"en": "The tVOC-level changed"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=airq"
+		}
+	],
+	"tokens": [
+		{
+			"name": "measure_voc",
+			"type": "number",
+			"title": { 
+				"en": "tVOC level"
+			},
+			"example": 53
+		}
+	]
+}

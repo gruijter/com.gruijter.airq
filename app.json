@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.gruijter.airq",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#00b5dd",
@@ -161,6 +161,32 @@
         ]
       },
       {
+        "title": {
+          "en": "The virus alarm turned off"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ],
+        "id": "alarm_virus_false"
+      },
+      {
+        "title": {
+          "en": "The virus alarm turned on"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ],
+        "id": "alarm_virus_true"
+      },
+      {
         "id": "door_event",
         "title": {
           "en": "Door event detected"
@@ -172,6 +198,174 @@
             "filter": "driver_id=airq"
           }
         ]
+      },
+      {
+        "title": {
+          "en": "The dewpoint changed"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_dewpt",
+            "type": "number",
+            "title": {
+              "en": "Dewpoint"
+            },
+            "example": 13
+          }
+        ],
+        "id": "measure_dewpt_changed"
+      },
+      {
+        "title": {
+          "en": "The NO2-level changed"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_no2",
+            "type": "number",
+            "title": {
+              "en": "NO2 level"
+            },
+            "example": 53
+          }
+        ],
+        "id": "measure_no2_changed"
+      },
+      {
+        "title": {
+          "en": "The noise max changed"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_noise.max",
+            "type": "number",
+            "title": {
+              "en": "Noise max level"
+            },
+            "example": 53
+          }
+        ],
+        "id": "measure_noise.max_changed"
+      },
+      {
+        "title": {
+          "en": "The O2-level changed"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_o2",
+            "type": "number",
+            "title": {
+              "en": "O2 level"
+            },
+            "example": 20
+          }
+        ],
+        "id": "measure_o2_changed"
+      },
+      {
+        "title": {
+          "en": "The O3-level changed"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_o3",
+            "type": "number",
+            "title": {
+              "en": "O3 level"
+            },
+            "example": 53
+          }
+        ],
+        "id": "measure_o3_changed"
+      },
+      {
+        "title": {
+          "en": "The Virus Free index changed"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_virus",
+            "type": "number",
+            "title": {
+              "en": "Virus Free index"
+            },
+            "example": 73
+          }
+        ],
+        "id": "measure_virus_changed"
+      },
+      {
+        "title": {
+          "en": "The tVOC-level changed"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_voc",
+            "type": "number",
+            "title": {
+              "en": "tVOC level"
+            },
+            "example": 53
+          }
+        ],
+        "id": "measure_voc_changed"
       },
       {
         "id": "restarted",
@@ -244,6 +438,19 @@
         "id": "alarm_perf_is_on",
         "title": {
           "en": "The performance alarm is !{{on|off}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=airq"
+          }
+        ]
+      },
+      {
+        "id": "alarm_virus_is_on",
+        "title": {
+          "en": "The virus alarm is !{{on|off}}"
         },
         "args": [
           {
@@ -360,12 +567,14 @@
       "capabilities": [
         "measure_health",
         "measure_perf",
+        "measure_virus",
         "measure_temperature",
         "measure_humidity",
         "measure_humidity_abs",
         "measure_dewpt",
         "measure_pressure",
         "measure_noise",
+        "measure_noise.max",
         "measure_voc",
         "measure_so2",
         "measure_co",
@@ -379,8 +588,16 @@
         "alarm_fire",
         "alarm_gas",
         "alarm_health",
-        "alarm_perf"
+        "alarm_perf",
+        "alarm_virus"
       ],
+      "capabilitiesOptions": {
+        "measure_noise.max": {
+          "title": {
+            "en": "Noise Max"
+          }
+        }
+      },
       "images": {
         "small": "/drivers/airq/assets/images/small.jpg",
         "large": "/drivers/airq/assets/images/large.jpg",
@@ -526,6 +743,19 @@
               "value": 50,
               "min": 1,
               "max": 99
+            },
+            {
+              "id": "alarm_virus_threshold",
+              "type": "number",
+              "label": {
+                "en": "Virus alarm threshold"
+              },
+              "hint": {
+                "en": "Virus alarm will be triggered on or below this value"
+              },
+              "value": 50,
+              "min": 1,
+              "max": 99
             }
           ]
         }
@@ -592,6 +822,26 @@
       "setable": false,
       "uiComponent": "sensor",
       "icon": "./assets/measure_perf.svg"
+    },
+    "alarm_virus": {
+      "type": "boolean",
+      "title": {
+        "en": "Virus alarm"
+      },
+      "desc": {
+        "en": "True when performance indicator is below the configured value"
+      },
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "Virus alarm turned on"
+      },
+      "insightsTitleFalse": {
+        "en": "Virus alarm turned off"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "./assets/measure_virus.svg"
     },
     "measure_co": {
       "type": "number",
@@ -666,20 +916,6 @@
       "insights": true,
       "uiComponent": "sensor",
       "icon": "./assets/measure_no2.svg"
-    },
-    "measure_noise": {
-      "type": "number",
-      "title": {
-        "en": "Noise"
-      },
-      "units": {
-        "en": "dB(A)"
-      },
-      "decimals": 3,
-      "getable": true,
-      "setable": false,
-      "insights": true,
-      "uiComponent": "sensor"
     },
     "measure_o2": {
       "type": "number",
@@ -770,6 +1006,21 @@
       "insights": true,
       "uiComponent": "sensor",
       "icon": "./assets/measure_so2.svg"
+    },
+    "measure_virus": {
+      "type": "number",
+      "title": {
+        "en": "Virus free"
+      },
+      "units": {
+        "en": "%"
+      },
+      "decimals": 3,
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "./assets/measure_virus.svg"
     },
     "measure_voc": {
       "type": "number",

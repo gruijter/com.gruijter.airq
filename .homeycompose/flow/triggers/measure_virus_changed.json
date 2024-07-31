@@ -1,0 +1,23 @@
+{
+	"title": { 
+		"en": "The Virus Free index changed"
+	},
+	"highlight": true,
+	"args": [
+		{
+				"type": "device",
+				"name": "device",
+				"filter": "driver_id=airq"
+		}
+	],
+	"tokens": [
+		{
+			"name": "measure_virus",
+			"type": "number",
+			"title": { 
+				"en": "Virus Free index"
+			},
+			"example": 73
+		}
+	]
+}

@@ -55,7 +55,7 @@
 				"hint": {
 						"en": "Interval for checking the device for a status change."
 				},
-				"min": 1,
+				"min": 2,
 				"value": 10
 			}
 		]
